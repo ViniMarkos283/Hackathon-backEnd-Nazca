@@ -97,3 +97,19 @@ CREATE TABLE evidencia_treinamento (
     criado_em                  TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_evidencia_trein FOREIGN KEY (treinamento_colaborador_id) REFERENCES treinamento_colaborador(id)
 ) ENGINE=InnoDB;
+
+-- ALERTA (estava no V2)
+ALTER TABLE cargo
+  ADD COLUMN nivel ENUM('operacional','tecnico','analista','supervisor','gerente')
+  NOT NULL DEFAULT 'operacional'
+  AFTER setor_id;
+
+CREATE TABLE alerta (
+    id               INT AUTO_INCREMENT PRIMARY KEY,
+    tipo             ENUM('pop_vencido','treinamento_atrasado','revisao_pendente') NOT NULL,
+    mensagem         TEXT NOT NULL,
+    lido             BOOLEAN NOT NULL DEFAULT FALSE,
+    referencia_id    INT NULL,
+    referencia_tipo  VARCHAR(50) NULL,
+    criado_em        TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
