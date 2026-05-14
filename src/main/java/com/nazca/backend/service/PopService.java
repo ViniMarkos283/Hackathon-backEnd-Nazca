@@ -39,6 +39,10 @@ public class PopService {
         return toResponse(findOrThrow(id));
     }
 
+    public PopResponse buscarPorCodigo(String codigo) {
+        return toResponse(findOrThrowByCodigo(codigo));
+    }
+
     public List<PopResponse> listarPorStatus(PopStatus status) {
         return popRepository.findByStatus(status).stream().map(this::toResponse).toList();
     }
@@ -64,15 +68,18 @@ public class PopService {
     }
 
     @Transactional
-    public PopResponse atualizar(Integer id, PopRequest request) {
-        Pop pop = findOrThrow(id);
+    public PopResponse atualizar(String codigo, PopRequest request) {
+        Pop pop = findOrThrowByCodigo(codigo);
+
         Setor setor = setorRepository.findById(request.getSetorId())
                 .orElseThrow(() -> new ResourceNotFoundException("Setor não encontrado"));
+
         pop.setDescricao(request.getDescricao());
         pop.setSetor(setor);
         pop.setVersao(request.getVersao());
         pop.setDataValidade(request.getDataValidade());
         pop.setStatus(request.getStatus());
+
         return toResponse(popRepository.save(pop));
     }
 
@@ -149,6 +156,12 @@ public class PopService {
     private Pop findOrThrow(Integer id) {
         return popRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("POP não encontrado: " + id));
+    }
+
+    private Pop findOrThrowByCodigo(String codigo) {
+        return popRepository.findByCodigo(codigo)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("POP não encontrado: " + codigo));
     }
 
     PopResponse toResponse(Pop pop) {

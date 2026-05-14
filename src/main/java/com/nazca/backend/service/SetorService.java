@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class SetorService {
@@ -24,9 +23,11 @@ public class SetorService {
                 .toList();
     }
 
-    public SetorResponse buscarPorId(Integer id) {
-        Setor setor = setorRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Setor não encontrado: " + id));
+    public SetorResponse buscarPorNome(String nome) {
+        Setor setor = setorRepository.findByNome(nome)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Setor não encontrado: " + nome));
+
         return toResponse(setor);
     }
 
@@ -37,26 +38,39 @@ public class SetorService {
                 .descricao(request.getDescricao())
                 .ativo(true)
                 .build();
+
         return toResponse(setorRepository.save(setor));
     }
 
     @Transactional
-    public SetorResponse atualizar(Integer id, SetorRequest request) {
-        Setor setor = setorRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Setor não encontrado: " + id));
+    public SetorResponse atualizar(String nome, SetorRequest request) {
+
+        Setor setor = setorRepository.findByNome(nome)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Setor não encontrado: " + nome));
+
         setor.setNome(request.getNome());
         setor.setDescricao(request.getDescricao());
+
         return toResponse(setorRepository.save(setor));
     }
 
     private SetorResponse toResponse(Setor setor) {
-        long totalPops = setor.getPops() != null ? setor.getPops().size() : 0;
+
+        long totalPops = setor.getPops() != null
+                ? setor.getPops().size()
+                : 0;
+
         long totalColabs = setor.getCargos() != null
                 ? setor.getCargos().stream()
-                    .flatMap(c -> c.getColaboradores() != null ? c.getColaboradores().stream() : java.util.stream.Stream.empty())
-                    .filter(c -> Boolean.TRUE.equals(c.getAtivo()))
-                    .count()
+                .flatMap(c ->
+                        c.getColaboradores() != null
+                                ? c.getColaboradores().stream()
+                                : java.util.stream.Stream.empty())
+                .filter(c -> Boolean.TRUE.equals(c.getAtivo()))
+                .count()
                 : 0;
+
         return SetorResponse.builder()
                 .id(setor.getId())
                 .nome(setor.getNome())

@@ -25,9 +25,9 @@ public class SetorController {
         return ResponseEntity.ok(service.listarTodos());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<SetorResponse> buscar(@PathVariable Integer id) {
-        return ResponseEntity.ok(service.buscarPorId(id));
+    @GetMapping("/{nome}")
+    public ResponseEntity<SetorResponse> buscar(@PathVariable String nome) {
+        return ResponseEntity.ok(service.buscarPorNome(nome));
     }
 
     @PostMapping
@@ -35,9 +35,9 @@ public class SetorController {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.criar(request));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<SetorResponse> atualizar(@PathVariable Integer id,
+    @PutMapping("/{nome}")
+    public ResponseEntity<SetorResponse> atualizar(@PathVariable String nome,
                                                     @Valid @RequestBody SetorRequest request) {
-        return ResponseEntity.ok(service.atualizar(id, request));
+        return ResponseEntity.ok(service.atualizar(nome, request));
     }
 }

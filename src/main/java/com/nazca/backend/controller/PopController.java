@@ -35,9 +35,9 @@ public class PopController {
         return ResponseEntity.ok(popService.listarTodos());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<PopResponse> buscar(@PathVariable Integer id) {
-        return ResponseEntity.ok(popService.buscarPorId(id));
+    @GetMapping("/{codigo}")
+    public ResponseEntity<PopResponse> buscar(@PathVariable String codigo) {
+        return ResponseEntity.ok(popService.buscarPorCodigo(codigo));
     }
 
     @Operation(summary = "Filtra POPs por status (ativo | em_revisao | obsoleto)")
@@ -57,10 +57,10 @@ public class PopController {
         return ResponseEntity.status(HttpStatus.CREATED).body(popService.criar(request));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<PopResponse> atualizar(@PathVariable Integer id,
+    @PutMapping("/{codigo}")
+    public ResponseEntity<PopResponse> atualizar(@PathVariable String codigo,
                                                   @Valid @RequestBody PopRequest request) {
-        return ResponseEntity.ok(popService.atualizar(id, request));
+        return ResponseEntity.ok(popService.atualizar(codigo, request));
     }
 
     @Operation(summary = "Importa POPs via planilha Excel (.xlsx)")
