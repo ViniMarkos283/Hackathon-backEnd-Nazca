@@ -33,6 +33,7 @@ public class TreinamentoColaborador {
     private String evidenciaUrl;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private TreinamentoStatus status = TreinamentoStatus.concluido;
 
     @Column(name = "criado_em", nullable = false, updatable = false)

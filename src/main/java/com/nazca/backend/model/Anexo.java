@@ -21,18 +21,23 @@ public class Anexo {
     @Column(columnDefinition = "TEXT")
     private String descricao;
 
-    @Column(name = "data_criacao")
+    @Column(name = "data_criacao", nullable = false)
     private LocalDate dataCriacao;
 
     @Column(name = "data_validade")
     private LocalDate dataValidade;
 
-    @Column(length = 20)
+    @Column(length = 20, nullable = false)
     private String status = "ativo";
 
     @Column(name = "criado_em", nullable = false, updatable = false)
     private LocalDateTime criadoEm;
 
     @PrePersist
-    void prePersist() { this.criadoEm = LocalDateTime.now(); }
+    void prePersist() {
+        if (this.dataCriacao == null) {
+            this.dataCriacao = LocalDate.now();
+        }
+        this.criadoEm = LocalDateTime.now();
+    }
 }
