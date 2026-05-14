@@ -1,7 +1,7 @@
-package com.nazca.repository;
+package com.nazca.backend.repository;
 
-import com.nazca.model.TreinamentoColaborador;
-import com.nazca.model.enums.TreinamentoStatus;
+import com.nazca.backend.model.TreinamentoColaborador;
+import com.nazca.backend.model.enums.TreinamentoStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -59,5 +59,5 @@ public interface TreinamentoRepository extends JpaRepository<TreinamentoColabora
             SELECT c.cargo.id FROM Colaborador c WHERE c.id = :colaboradorId
         )
     """)
-    List<com.nazca.model.PopCargo> findTreinamentosPendentes(@Param("colaboradorId") Integer colaboradorId);
+    List<com.nazca.backend.model.PopCargo> findTreinamentosPendentes(@Param("colaboradorId") Integer colaboradorId);
 }

@@ -1,6 +1,6 @@
-package com.nazca.dto.response;
+package com.nazca.backend.dto.response;
 
-import com.nazca.model.enums.TreinamentoStatus;
+import com.nazca.backend.model.enums.TreinamentoStatus;
 import lombok.Builder;
 import lombok.Data;
 import java.time.LocalDate;

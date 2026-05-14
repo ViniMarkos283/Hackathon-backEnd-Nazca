@@ -1,9 +1,9 @@
-package com.nazca.controller;
+package com.nazca.backend.controller;
 
-import com.nazca.dto.request.PopRequest;
-import com.nazca.dto.response.PopResponse;
-import com.nazca.model.enums.PopStatus;
-import com.nazca.service.PopService;
+import com.nazca.backend.dto.request.PopRequest;
+import com.nazca.backend.dto.response.PopResponse;
+import com.nazca.backend.model.enums.PopStatus;
+import com.nazca.backend.service.PopService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

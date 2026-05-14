@@ -1,10 +1,10 @@
-package com.nazca.service;
+package com.nazca.backend.service;
 
-import com.nazca.dto.request.ColaboradorRequest;
-import com.nazca.dto.response.*;
-import com.nazca.exception.ResourceNotFoundException;
-import com.nazca.model.*;
-import com.nazca.repository.*;
+import com.nazca.backend.dto.request.ColaboradorRequest;
+import com.nazca.backend.dto.response.*;
+import com.nazca.backend.exception.ResourceNotFoundException;
+import com.nazca.backend.model.*;
+import com.nazca.backend.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

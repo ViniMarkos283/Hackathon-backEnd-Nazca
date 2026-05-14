@@ -1,7 +1,7 @@
-package com.nazca.model;
+package com.nazca.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nazca.model.enums.NivelCargo;
+import com.nazca.backend.model.enums.NivelCargo;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;

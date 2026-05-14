@@ -1,7 +1,7 @@
-package com.nazca.service;
+package com.nazca.backend.service;
 
-import com.nazca.dto.response.DashboardResponse;
-import com.nazca.repository.*;
+import com.nazca.backend.dto.response.DashboardResponse;
+import com.nazca.backend.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;

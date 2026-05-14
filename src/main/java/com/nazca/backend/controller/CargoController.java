@@ -1,8 +1,8 @@
-package com.nazca.controller;
+package com.nazca.backend.controller;
 
-import com.nazca.dto.request.CargoRequest;
-import com.nazca.dto.response.CargoResponse;
-import com.nazca.service.CargoService;
+import com.nazca.backend.dto.request.CargoRequest;
+import com.nazca.backend.dto.response.CargoResponse;
+import com.nazca.backend.service.CargoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.nazca.exception;
+package com.nazca.backend.exception;
 
 import org.springframework.http.*;
 import org.springframework.validation.FieldError;

@@ -1,6 +1,6 @@
-package com.nazca.dto.response;
+package com.nazca.backend.dto.response;
 
-import com.nazca.model.enums.PopStatus;
+import com.nazca.backend.model.enums.PopStatus;
 import lombok.Builder;
 import lombok.Data;
 import java.time.LocalDate;

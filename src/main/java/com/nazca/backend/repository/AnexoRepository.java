@@ -1,6 +1,6 @@
-package com.nazca.cosmeticos.repository;
+package com.nazca.backend.repository;
 
-import com.nazca.cosmeticos.model.Anexo;
+import com.nazca.backend.model.Anexo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;

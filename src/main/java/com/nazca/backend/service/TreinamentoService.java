@@ -1,12 +1,12 @@
-package com.nazca.service;
+package com.nazca.backend.service;
 
-import com.nazca.dto.request.TreinamentoRequest;
-import com.nazca.dto.response.ConformidadeSetorResponse;
-import com.nazca.dto.response.TreinamentoResponse;
-import com.nazca.exception.ResourceNotFoundException;
-import com.nazca.model.*;
-import com.nazca.model.enums.TreinamentoStatus;
-import com.nazca.repository.*;
+import com.nazca.backend.dto.request.TreinamentoRequest;
+import com.nazca.backend.dto.response.ConformidadeSetorResponse;
+import com.nazca.backend.dto.response.TreinamentoResponse;
+import com.nazca.backend.exception.ResourceNotFoundException;
+import com.nazca.backend.model.*;
+import com.nazca.backend.model.enums.TreinamentoStatus;
+import com.nazca.backend.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;

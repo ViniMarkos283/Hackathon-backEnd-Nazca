@@ -1,4 +1,4 @@
-package com.nazca.dto.response;
+package com.nazca.backend.dto.response;
 
 import lombok.Builder;
 import lombok.Data;

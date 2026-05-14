@@ -1,6 +1,6 @@
-package com.nazca.repository;
+package com.nazca.backend.repository;
 
-import com.nazca.model.PopCargo;
+import com.nazca.backend.model.PopCargo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;

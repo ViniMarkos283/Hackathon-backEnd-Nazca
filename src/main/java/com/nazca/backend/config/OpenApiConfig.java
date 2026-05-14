@@ -1,4 +1,4 @@
-package com.nazca.config;
+package com.nazca.backend.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

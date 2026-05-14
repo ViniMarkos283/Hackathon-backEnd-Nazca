@@ -1,11 +1,11 @@
-package com.nazca.service;
+package com.nazca.backend.service;
 
-import com.nazca.dto.response.TreinamentoResponse;
-import com.nazca.exception.ResourceNotFoundException;
-import com.nazca.model.EvidenciaTreinamento;
-import com.nazca.model.TreinamentoColaborador;
-import com.nazca.repository.EvidenciaRepository;
-import com.nazca.repository.TreinamentoRepository;
+import com.nazca.backend.dto.response.TreinamentoResponse;
+import com.nazca.backend.exception.ResourceNotFoundException;
+import com.nazca.backend.model.EvidenciaTreinamento;
+import com.nazca.backend.model.TreinamentoColaborador;
+import com.nazca.backend.repository.EvidenciaRepository;
+import com.nazca.backend.repository.TreinamentoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

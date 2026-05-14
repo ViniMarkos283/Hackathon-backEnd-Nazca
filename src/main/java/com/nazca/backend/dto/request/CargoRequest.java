@@ -1,6 +1,6 @@
-package com.nazca.dto.request;
+package com.nazca.backend.dto.request;
 
-import com.nazca.model.enums.NivelCargo;
+import com.nazca.backend.model.enums.NivelCargo;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;

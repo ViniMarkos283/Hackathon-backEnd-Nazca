@@ -1,7 +1,7 @@
-package com.nazca.controller;
+package com.nazca.backend.controller;
 
-import com.nazca.dto.response.AlertaResponse;
-import com.nazca.service.AlertaService;
+import com.nazca.backend.dto.response.AlertaResponse;
+import com.nazca.backend.service.AlertaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

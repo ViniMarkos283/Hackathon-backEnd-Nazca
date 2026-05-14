@@ -1,6 +1,6 @@
-package com.nazca.model;
+package com.nazca.backend.model;
 
-import com.nazca.model.enums.TreinamentoStatus;
+import com.nazca.backend.model.enums.TreinamentoStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;

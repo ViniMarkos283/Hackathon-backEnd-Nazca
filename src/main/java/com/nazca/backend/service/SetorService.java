@@ -1,43 +1,69 @@
-package com.nazca.controller;
+package com.nazca.backend.service;
 
-import com.nazca.dto.request.SetorRequest;
-import com.nazca.dto.response.SetorResponse;
-import com.nazca.service.SetorService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
+import com.nazca.backend.dto.request.SetorRequest;
+import com.nazca.backend.dto.response.SetorResponse;
+import com.nazca.backend.exception.ResourceNotFoundException;
+import com.nazca.backend.model.Setor;
+import com.nazca.backend.repository.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.*;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/setores")
+@Service
 @RequiredArgsConstructor
-@Tag(name = "Setores")
-public class SetorController {
+public class SetorService {
 
-    private final SetorService setorService;
+    private final SetorRepository setorRepository;
+    private final PopRepository popRepository;
+    private final ColaboradorRepository colaboradorRepository;
 
-    @Operation(summary = "Lista todos os setores (com qtd de POPs e colaboradores)")
-    @GetMapping
-    public ResponseEntity<List<SetorResponse>> listar() {
-        return ResponseEntity.ok(setorService.listarTodos());
+    public List<SetorResponse> listarTodos() {
+        return setorRepository.findAllAtivos().stream()
+                .map(this::toResponse)
+                .toList();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<SetorResponse> buscar(@PathVariable Integer id) {
-        return ResponseEntity.ok(setorService.buscarPorId(id));
+    public SetorResponse buscarPorId(Integer id) {
+        Setor setor = setorRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Setor não encontrado: " + id));
+        return toResponse(setor);
     }
 
-    @PostMapping
-    public ResponseEntity<SetorResponse> criar(@Valid @RequestBody SetorRequest request) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(setorService.criar(request));
+    @Transactional
+    public SetorResponse criar(SetorRequest request) {
+        Setor setor = Setor.builder()
+                .nome(request.getNome())
+                .descricao(request.getDescricao())
+                .ativo(true)
+                .build();
+        return toResponse(setorRepository.save(setor));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<SetorResponse> atualizar(@PathVariable Integer id,
-                                                    @Valid @RequestBody SetorRequest request) {
-        return ResponseEntity.ok(setorService.atualizar(id, request));
+    @Transactional
+    public SetorResponse atualizar(Integer id, SetorRequest request) {
+        Setor setor = setorRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Setor não encontrado: " + id));
+        setor.setNome(request.getNome());
+        setor.setDescricao(request.getDescricao());
+        return toResponse(setorRepository.save(setor));
+    }
+
+    private SetorResponse toResponse(Setor setor) {
+        long totalPops = setor.getPops() != null ? setor.getPops().size() : 0;
+        long totalColabs = setor.getCargos() != null
+                ? setor.getCargos().stream()
+                    .flatMap(c -> c.getColaboradores() != null ? c.getColaboradores().stream() : java.util.stream.Stream.empty())
+                    .filter(c -> Boolean.TRUE.equals(c.getAtivo()))
+                    .count()
+                : 0;
+        return SetorResponse.builder()
+                .id(setor.getId())
+                .nome(setor.getNome())
+                .descricao(setor.getDescricao())
+                .ativo(setor.getAtivo())
+                .totalPops(totalPops)
+                .totalColaboradores(totalColabs)
+                .build();
     }
 }

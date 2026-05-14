@@ -1,7 +1,7 @@
-package com.nazca.repository;
+package com.nazca.backend.repository;
 
-import com.nazca.model.Alerta;
-import com.nazca.model.enums.AlertaTipo;
+import com.nazca.backend.model.Alerta;
+import com.nazca.backend.model.enums.AlertaTipo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;

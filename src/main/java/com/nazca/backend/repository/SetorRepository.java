@@ -1,6 +1,6 @@
-package com.nazca.repository;
+package com.nazca.backend.repository;
 
-import com.nazca.model.Setor;
+import com.nazca.backend.model.Setor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,7 +1,7 @@
-package com.nazca.controller;
+package com.nazca.backend.controller;
 
-import com.nazca.model.EvidenciaTreinamento;
-import com.nazca.service.EvidenciaService;
+import com.nazca.backend.model.EvidenciaTreinamento;
+import com.nazca.backend.service.EvidenciaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

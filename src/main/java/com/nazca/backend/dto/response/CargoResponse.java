@@ -1,6 +1,6 @@
-package com.nazca.dto.response;
+package com.nazca.backend.dto.response;
 
-import com.nazca.model.enums.NivelCargo;
+import com.nazca.backend.model.enums.NivelCargo;
 import lombok.Builder;
 import lombok.Data;
 import java.util.List;

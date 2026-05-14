@@ -1,4 +1,4 @@
-package com.nazca.model;
+package com.nazca.backend.model;
 
 import jakarta.persistence.*;
 import lombok.*;

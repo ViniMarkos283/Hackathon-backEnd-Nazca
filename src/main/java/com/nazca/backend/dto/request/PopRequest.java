@@ -1,6 +1,6 @@
-package com.nazca.dto.request;
+package com.nazca.backend.dto.request;
 
-import com.nazca.model.enums.PopStatus;
+import com.nazca.backend.model.enums.PopStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;

@@ -1,6 +1,6 @@
-package com.nazca.dto.response;
+package com.nazca.backend.dto.response;
 
-import com.nazca.model.enums.AlertaTipo;
+import com.nazca.backend.model.enums.AlertaTipo;
 import lombok.Builder;
 import lombok.Data;
 import java.time.LocalDateTime;

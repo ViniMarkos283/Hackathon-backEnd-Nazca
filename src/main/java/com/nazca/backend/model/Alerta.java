@@ -1,6 +1,6 @@
-package com.nazca.model;
+package com.nazca.backend.model;
 
-import com.nazca.model.enums.AlertaTipo;
+import com.nazca.backend.model.enums.AlertaTipo;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;

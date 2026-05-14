@@ -1,8 +1,8 @@
-package com.nazca.controller;
+package com.nazca.backend.controller;
 
-import com.nazca.dto.request.TreinamentoRequest;
-import com.nazca.dto.response.*;
-import com.nazca.service.TreinamentoService;
+import com.nazca.backend.dto.request.TreinamentoRequest;
+import com.nazca.backend.dto.response.*;
+import com.nazca.backend.service.TreinamentoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
